@@ -34,5 +34,20 @@ module Calculater
     def letrec_to_parameters_args_body(exp)
       let_to_parameters_args_body(exp)
     end
+
+    def letnamed?(exp)
+      exp[0] == :letnamed
+    end
+
+    def eval_letnamed(exp, env)
+      eval_letrec(letnamed_to_exp_for_letrec(exp), env)
+    end
+
+    def letnamed_to_exp_for_letrec(exp)
+      parameter = exp[1][0]
+      args = [:lambda, exp[1][1].map{ |elem| elem[0] }, exp[2]]
+      body = [parameter] + exp[1][1].map{ |elem| elem[1] }
+      [exp[0], [[parameter, args]], body]
+    end
   end
 end
