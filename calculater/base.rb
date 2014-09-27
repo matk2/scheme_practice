@@ -38,7 +38,8 @@ module Calculater
       lambda?(exp) or
         let?(exp) or
         if?(exp) or
-        letrec?(exp)
+        letrec?(exp) or
+        define?(exp)
     end
 
     def eval_special_form(exp, env)
@@ -50,6 +51,8 @@ module Calculater
         eval_if(exp, env)
       elsif letrec?(exp)
         eval_letrec(exp, env)
+      elsif define?(exp)
+        eval_define(exp, env)
       end
     end
 

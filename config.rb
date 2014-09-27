@@ -4,6 +4,7 @@ end
 
 include Calculater::Base
 include Calculater::Condition
+include Calculater::Define
 include Calculater::Env
 include Calculater::Lambda
 include Calculater::Let

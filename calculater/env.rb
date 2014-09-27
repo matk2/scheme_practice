@@ -13,6 +13,13 @@ module Calculater
       end
     end
 
+    def extend_env!(parameters, args, env)
+      alist = parameters.zip(args)
+      h = Hash.new
+      alist.each{ |k, v| h[k] = v }
+      env.unshift(h)
+    end
+
     $primitive_fun_env = {
       :+  => [:prim, lambda{ |x, y| x + y }],
       :-  => [:prim, lambda{ |x, y| x - y }],
