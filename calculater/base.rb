@@ -40,7 +40,8 @@ module Calculater
         if?(exp) or
         letrec?(exp) or
         define?(exp) or
-        cond?(exp)
+        cond?(exp) or
+        quote?(exp)
     end
 
     def eval_special_form(exp, env)
@@ -56,6 +57,8 @@ module Calculater
         eval_define(exp, env)
       elsif cond?(exp)
         eval_cond(exp, env)
+      elsif quote?(exp)
+        eval_quote(exp, env)
       end
     end
 
