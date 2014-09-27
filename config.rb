@@ -9,3 +9,4 @@ include Calculater::Env
 include Calculater::Lambda
 include Calculater::Let
 include Calculater::List
+include Calculater::Parse
