@@ -42,7 +42,8 @@ module Calculater
         define?(exp) or
         cond?(exp) or
         quote?(exp) or
-        letnamed?(exp)
+        letnamed?(exp) or
+        letstar?(exp)
     end
 
     def eval_special_form(exp, env)
@@ -62,6 +63,8 @@ module Calculater
         eval_quote(exp, env)
       elsif letnamed?(exp)
         eval_letnamed(exp, env)
+      elsif letstar?(exp)
+        eval_letstar(exp, env)
       end
     end
 

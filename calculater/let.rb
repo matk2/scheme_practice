@@ -49,5 +49,16 @@ module Calculater
       body = [parameter] + exp[1][1].map{ |elem| elem[1] }
       [exp[0], [[parameter, args]], body]
     end
+
+    def letstar?(exp)
+      exp[0] == :letstar
+    end
+
+    def eval_letstar(exp, env)
+      exp[1].each do |parameter, arg|
+        set_extend_env!([parameter], [arg], env)
+      end
+      eval_let(exp, env)
+    end
   end
 end
