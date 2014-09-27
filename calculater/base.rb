@@ -36,7 +36,8 @@ module Calculater
 
     def special_form?(exp)
       lambda?(exp) or
-        let?(exp)
+        let?(exp) or
+        if?(exp)
     end
 
     def eval_special_form(exp, env)
@@ -44,6 +45,8 @@ module Calculater
         eval_lambda(exp, env)
       elsif let?(exp)
         eval_let(exp, env)
+      elsif if?(exp)
+        eval_if(exp, env)
       end
     end
 

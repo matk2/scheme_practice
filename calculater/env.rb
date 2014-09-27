@@ -10,9 +10,19 @@ module Calculater
     $primitive_fun_env = {
       :+  => [:prim, lambda{ |x, y| x + y }],
       :-  => [:prim, lambda{ |x, y| x - y }],
-      :*  => [:prim, lambda{ |x, y| x * y }]
+      :*  => [:prim, lambda{ |x, y| x * y }],
+      :>  => [:prim, lambda{ |x, y| x > y }],
+      :>= => [:prim, lambda{ |x, y| x >= y }],
+      :<  => [:prim, lambda{ |x, y| x < y }],
+      :<= => [:prim, lambda{ |x, y| x <= y }],
+      :== => [:prim, lambda{ |x, y| x == y }]
     }
 
-    $global_env = [$primitive_fun_env]
+    $boolean_env = {
+      :true  => true,
+      :false => false
+    }
+
+    $global_env = [$primitive_fun_env, $boolean_env]
   end
 end
