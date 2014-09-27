@@ -11,3 +11,4 @@ include Calculater::Let
 include Calculater::List
 include Calculater::Parse
 include Calculater::Quote
+include Calculater::Repl
