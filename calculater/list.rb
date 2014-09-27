@@ -12,8 +12,8 @@ module Calculater
       list[1..-1]
     end
 
-    def eval_list(exp)
-      exp.map{ |e| _eval(e) }
+    def eval_list(exp, env)
+      exp.map{ |e| _eval(e, env) }
     end
   end
 end

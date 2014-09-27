@@ -4,4 +4,5 @@ end
 
 include Calculater::Base
 include Calculater::Env
+include Calculater::Lambda
 include Calculater::List
