@@ -8,8 +8,8 @@ module Calculater
           lookup_var(exp, env)
         end
       else
-        if lambda?(exp)
-          eval_lambda(exp, env)
+        if special_form?(exp)
+          eval_special_form(exp, env)
         else
           fun = _eval(car(exp), env)
           args = eval_list(cdr(exp), env)
@@ -32,6 +32,19 @@ module Calculater
         raise "couldn't find value to variable: '#{var}'"
       end
       alist[var]
+    end
+
+    def special_form?(exp)
+      lambda?(exp) or
+        let?(exp)
+    end
+
+    def eval_special_form(exp, env)
+      if lambda?(exp)
+        eval_lambda(exp, env)
+      elsif let?(exp)
+        eval_let(exp, env)
+      end
     end
 
     def apply(fun, args)

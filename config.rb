@@ -5,4 +5,5 @@ end
 include Calculater::Base
 include Calculater::Env
 include Calculater::Lambda
+include Calculater::Let
 include Calculater::List
